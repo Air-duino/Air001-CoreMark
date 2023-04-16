@@ -29,7 +29,7 @@ int ee_printf(const char *fmt, ...)
     va_list args;
     int len;
     va_start(args, fmt);
-    len = vsprintf(buf, fmt, args);
+    len = vsnprintf(buf, sizeof(buf),fmt, args);
     va_end(args);
 
     HAL_UART_Transmit(&huart1, (uint8_t *)buf, len, 0xFFFF);

@@ -53,9 +53,13 @@ C:/Users/HalfSweet/AppData/Local/Arm/Packs/AirM2M/AIR001xx_DFP/1.0.0/Device/Incl
 C:/Users/HalfSweet/AppData/Local/Arm/Packs/AirM2M/AIR001xx_DFP/1.0.0/Device/Include/air001_dev.h(4932): warning: no newline at end of file [-Wnewline-eof]
 */
   ^
+../CoreMark/simple/ee_printf.c(32): warning: implicitly declaring library function 'vsnprintf' with type 'int (char *, unsigned int, const char *, __builtin_va_list)' [-Wimplicit-function-declaration]
+    len = vsnprintf(buf, sizeof(buf),fmt, args);
+          ^
+../CoreMark/simple/ee_printf.c(32): note: include the header <stdio.h> or explicitly provide a declaration for 'vsnprintf'
 ../CoreMark/simple/ee_printf.c(32): warning: format string is not a string literal [-Wformat-nonliteral]
-    len = vsprintf(buf, fmt, args);
-                        ^~~
+    len = vsnprintf(buf, sizeof(buf),fmt, args);
+                                     ^~~
 ../CoreMark/simple/ee_printf.c(19): warning: In file included from...
 ../AIR001xx_HAL_Driver/Inc/air001xx_hal.h(33): warning: In file included from...
 ../inc\air001xx_hal_conf.h(307): warning: In file included from...
@@ -71,11 +75,11 @@ C:/Users/HalfSweet/AppData/Local/Arm/Packs/AirM2M/AIR001xx_DFP/1.0.0/Device/Incl
 ../AIR001xx_HAL_Driver/Inc\air001xx_hal_dma.h(124): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
   void                  *Parent;                                                      /*!< Parent object state                    */
                          ^
-9 warnings generated.
+10 warnings generated.
 compiling ee_printf.c...
 linking...
-Program Size: Code=16788 RO-data=2148 RW-data=212 ZI-data=2764  
-".\Objects\CoreMark.axf" - 0 Error(s), 9 Warning(s).
+Program Size: Code=16820 RO-data=2148 RW-data=212 ZI-data=2764  
+".\Objects\CoreMark.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 

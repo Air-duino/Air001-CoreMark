@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\CoreMark.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\CoreMark.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sun Apr 16 10:18:31 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sun Apr 16 10:22:20 2023
 <BR><P>
-<H3>Maximum Stack Usage =       2568 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       2576 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsprintf &rArr; _printf_char_common &rArr; __printf
+__rt_entry_main &rArr; main &rArr; $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsnprintf &rArr; _printf_char_common &rArr; __printf
 <P>
 <H3>
 Functions with no stack information
@@ -61,7 +61,7 @@ Function Pointers
  <LI><a href="#[29]">_printf_fp_dec_real</a> from _printf_fp_dec.o(.text) referenced from printf1.o(x$fpl$printf1)
  <LI><a href="#[2a]">_printf_fp_hex_real</a> from _printf_fp_hex.o(.text) referenced from printf2.o(x$fpl$printf2)
  <LI><a href="#[21]">_printf_input_char</a> from _printf_char_common.o(.text) referenced from _printf_char_common.o(.text)
- <LI><a href="#[20]">_sputc</a> from _sputc.o(.text) referenced from vsprintf.o(.text)
+ <LI><a href="#[20]">_snputc</a> from _snputc.o(.text) referenced from vsnprintf.o(.text)
  <LI><a href="#[23]">cmp_complex</a> from core_list_join.o(.text.cmp_complex) referenced from core_list_join.o(.text.core_bench_list)
  <LI><a href="#[24]">cmp_idx</a> from core_list_join.o(.text.cmp_idx) referenced from core_list_join.o(.text.core_list_init)
  <LI><a href="#[26]">crc16</a> from core_util.o(.text.crc16) referenced from core_main.o(.text.coremark_main)
@@ -429,8 +429,8 @@ Global Symbols
 <P><STRONG><a name="[fd]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[5d]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 2568 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsprintf &rArr; _printf_char_common &rArr; __printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 2576 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -535,12 +535,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[64]"></a>vsprintf</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, vsprintf.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
-<LI>Call Chain = vsprintf &rArr; _printf_char_common &rArr; __printf
+<P><STRONG><a name="[64]"></a>vsnprintf</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, vsnprintf.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
+<LI>Call Chain = vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ee_printf
 </UL>
@@ -707,13 +706,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsprintf
+<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsnprintf
 </UL>
 
-<P><STRONG><a name="[20]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, _sputc.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsprintf
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> vsprintf.o(.text)
+<P><STRONG><a name="[20]"></a>_snputc</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, _snputc.o(.text))
+<BR>[Address Reference Count : 1]<UL><LI> vsnprintf.o(.text)
 </UL>
 <P><STRONG><a name="[77]"></a>_printf_wctomb</STRONG> (Thumb, 182 bytes, Stack size 56 bytes, _printf_wctomb.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = _printf_wctomb &rArr; _wcrtomb
@@ -1067,8 +1064,8 @@ Global Symbols
 <P><STRONG><a name="[10f]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[5e]"></a>main</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, system_air001xx_1.o(.text.$Sub$$main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 2568 + Unknown Stack Size
-<LI>Call Chain = main &rArr; $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsprintf &rArr; _printf_char_common &rArr; __printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 2576 + Unknown Stack Size
+<LI>Call Chain = main &rArr; $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;$Super$$main
 </UL>
@@ -1335,8 +1332,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[bf]"></a>coremark_main</STRONG> (Thumb, 1192 bytes, Stack size 2152 bytes, core_main.o(.text.coremark_main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 2552 + Unknown Stack Size
-<LI>Call Chain = coremark_main &rArr; ee_printf &rArr; vsprintf &rArr; _printf_char_common &rArr; __printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 2560 + Unknown Stack Size
+<LI>Call Chain = coremark_main &rArr; ee_printf &rArr; vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
@@ -1397,12 +1394,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crcu16
 </UL>
 
-<P><STRONG><a name="[27]"></a>ee_printf</STRONG> (Thumb, 56 bytes, Stack size 288 bytes, ee_printf.o(.text.ee_printf))
-<BR><BR>[Stack]<UL><LI>Max Depth = 400 + Unknown Stack Size
-<LI>Call Chain = ee_printf &rArr; vsprintf &rArr; _printf_char_common &rArr; __printf
+<P><STRONG><a name="[27]"></a>ee_printf</STRONG> (Thumb, 60 bytes, Stack size 288 bytes, ee_printf.o(.text.ee_printf))
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
+<LI>Call Chain = ee_printf &rArr; vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsprintf
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsnprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;coremark_main
 </UL>
@@ -1425,8 +1422,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9b]"></a>$Super$$main</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 2560 + Unknown Stack Size
-<LI>Call Chain = $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsprintf &rArr; _printf_char_common &rArr; __printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 2568 + Unknown Stack Size
+<LI>Call Chain = $Super$$main &rArr; coremark_main &rArr; ee_printf &rArr; vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;coremark_main
