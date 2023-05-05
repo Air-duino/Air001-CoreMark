@@ -73,14 +73,14 @@ typedef uint32_t CORE_TICKS;
 */
 #ifndef COMPILER_VERSION
 #ifdef __GNUC__
-#define COMPILER_VERSION "GCC"__VERSION__
+#define COMPILER_VERSION "Arm"__VERSION__
 #else
 #define COMPILER_VERSION "Please put compiler version here (e.g. gcc 4.1)"
 #endif
 #endif
 #ifndef COMPILER_FLAGS
 #define COMPILER_FLAGS \
-    "-Oz" /* "Please put compiler flags here (e.g. -o3)" */
+    "-Ofast" /* "Please put compiler flags here (e.g. -o3)" */
 #endif
 #ifndef MEM_LOCATION
 #define MEM_LOCATION "STACK"

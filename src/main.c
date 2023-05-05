@@ -89,8 +89,8 @@ int main(void)
   HS_GPIO_Init();
   HS_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  const char *str = "Hello World!\r\n";
-  HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str), 0xFFFF);
+  ee_printf("About to start Air001 CoreMark testing\r\n");
+  ee_printf("The current running frequency is %d Hz\r\n", HAL_RCC_GetSysClockFreq());
 
   // float test = time_in_secs(11111);
   // ee_printf("Total time (secs): %f \n", test);
@@ -143,13 +143,13 @@ void SystemClock_Config(void)
 
 static void HS_GPIO_Init(void)
 {
-    /* GPIO Ports Clock Enable */
+  /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
 }
 
 static void HS_USART1_UART_Init(void)
 {
-  
+
   /* USER CODE BEGIN USART1_Init 0 */
 
   /* USER CODE END USART1_Init 0 */
@@ -157,13 +157,13 @@ static void HS_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 1 */
 
   /* USER CODE END USART1_Init 1 */
-  huart1.Instance          = USART1;
-  huart1.Init.BaudRate     = 115200;
-  huart1.Init.WordLength   = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits     = UART_STOPBITS_1;
-  huart1.Init.Parity       = UART_PARITY_NONE;
-  huart1.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
-  huart1.Init.Mode         = UART_MODE_TX_RX;
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
   if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
