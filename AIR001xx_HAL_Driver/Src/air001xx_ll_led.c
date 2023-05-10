@@ -155,4 +155,4 @@ void LL_LED_StructInit(LL_LED_InitTypeDef *LED_InitStruct)
 
 #endif /* USE_FULL_LL_DRIVER */
 
-/************************ (C) COPYRIGHT AirM2M Semiconductor *****END OF FILE****/
+/************************ (C) COPYRIGHT AirM2M *****END OF FILE****/

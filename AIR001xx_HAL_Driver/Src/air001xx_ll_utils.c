@@ -8,15 +8,6 @@
   *
   * <h2><center>&copy; Copyright (c) AirM2M.
   * All rights reserved.</center></h2>
-  *
-  * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
@@ -159,7 +150,19 @@ void LL_mDelay(uint32_t Delay)
     }
   }
 }
-
+void LL_uDelay(uint32_t Delay)
+{
+  uint32_t temp;
+  SysTick->LOAD = Delay * (SystemCoreClock/1000000);
+  SysTick->VAL = 0x00;
+  SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+  do
+  {
+    temp = SysTick->CTRL;
+  } while ((temp & 0x01) && !(temp & (1 << 16)));
+  SysTick->CTRL = 0x00;
+  SysTick->VAL = 0x00;
+}
 /**
   * @}
   */

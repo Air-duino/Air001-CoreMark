@@ -116,14 +116,14 @@ extern "C" {
 /** @defgroup PWR_LL_EC_PVDLEVEL PVDLEVEL
   * @{
   */
-#define LL_PWR_PVDLEVEL_0                  0x000000000u                                                 /* VPVD0 (around 1.8V) */
-#define LL_PWR_PVDLEVEL_1                  (PWR_CR2_PVDT_0)                                             /* VPVD1 (around 2.0V) */
-#define LL_PWR_PVDLEVEL_2                  (PWR_CR2_PVDT_1)                                             /* VPVD2 (around 2.2V) */
-#define LL_PWR_PVDLEVEL_3                  (PWR_CR2_PVDT_1 | PWR_CR2_PVDT_0)                           /* VPVD3 (around 2.4V) */
-#define LL_PWR_PVDLEVEL_4                  (PWR_CR2_PVDT_2)                                             /* VPVD4 (around 2.6V) */
-#define LL_PWR_PVDLEVEL_5                  (PWR_CR2_PVDT_2 | PWR_CR2_PVDT_0)                           /* VPVD5 (around 2. 8V) */
-#define LL_PWR_PVDLEVEL_6                  (PWR_CR2_PVDT_2 | PWR_CR2_PVDT_1)                           /* VPVD6 (around 3.0V) */
-#define LL_PWR_PVDLEVEL_7                  (PWR_CR2_PVDT_2 | PWR_CR2_PVDT_1 | PWR_CR2_PVDT_0)         /* VPVD7 (around 3.2V) */
+#define LL_PWR_PVDLEVEL_1V8                 0x000000000u                                                 /* VPVD0 (around 1.8V) */
+#define LL_PWR_PVDLEVEL_2V0                  (PWR_CR2_PVDT_0)                                             /* VPVD1 (around 2.0V) */
+#define LL_PWR_PVDLEVEL_2V2                  (PWR_CR2_PVDT_1)                                             /* VPVD2 (around 2.2V) */
+#define LL_PWR_PVDLEVEL_2V4                  (PWR_CR2_PVDT_1 | PWR_CR2_PVDT_0)                           /* VPVD3 (around 2.4V) */
+#define LL_PWR_PVDLEVEL_2V6                 (PWR_CR2_PVDT_2)                                             /* VPVD4 (around 2.6V) */
+#define LL_PWR_PVDLEVEL_2V8                  (PWR_CR2_PVDT_2 | PWR_CR2_PVDT_0)                           /* VPVD5 (around 2. 8V) */
+#define LL_PWR_PVDLEVEL_3V0                  (PWR_CR2_PVDT_2 | PWR_CR2_PVDT_1)                           /* VPVD6 (around 3.0V) */
+#define LL_PWR_PVDLEVEL_3V2                  (PWR_CR2_PVDT_2 | PWR_CR2_PVDT_1 | PWR_CR2_PVDT_0)         /* VPVD7 (around 3.2V) */
 /**
   * @}
   */
