@@ -12,15 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install requirements
-        run: |
-          sudo apt update
-          sudo apt install curl libxml2-utils
-
       - name: Install CMSIS-Toolbox
         run: |
           wget https://artifacts.keil.arm.com/cmsis-toolbox/2.2.1/cmsis-toolbox-linux-amd64.tar.gz
           tar -zxvf cmsis-toolbox-linux-amd64.tar.gz
+          echo $(pwd)
           echo "export PATH=$PATH:$(pwd)/cmsis-toolbox-linux-amd64/bin" >> ~/.bashrc
           source ~/.bashrc
           cpackget init https://www.keil.com/pack/index.pidx
