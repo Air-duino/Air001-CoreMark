@@ -32,6 +32,10 @@ jobs:
           cpackget init https://www.keil.com/pack/index.pidx
           armlm activate -product KEMDK-COM0 -server https://mdk-preview.keil.arm.com
           cbuild CoreMark.csolution.yml --update-rte --packs
+          vcpkg deactivate
+          vcpkg use armlang
+          fromelf --bin output="out/CoreMark/Project/CoreMark.bin" "out/CoreMark/Project/CoreMark.axf"
+          fromelf --i32 --output="out/CoreMark/Project/CoreMark.hex" "out/CoreMark/Project/CoreMark.axf"
       
       - name: release
         uses: ncipollo/release-action@v1
