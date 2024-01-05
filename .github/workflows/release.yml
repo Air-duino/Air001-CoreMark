@@ -1,0 +1,42 @@
+name: release
+
+on:
+  push:
+
+  workflow_dispatch:
+
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install requirements
+        run: |
+          sudo apt update
+          sudo apt install curl libxml2-utils
+          mkdir -p ~/output
+          cp AirM2M.pidx ~/output
+
+      - name: Install CMSIS-Toolbox
+        run: |
+          wget https://artifacts.keil.arm.com/cmsis-toolbox/2.2.1/cmsis-toolbox-linux-amd64.tar.gz
+          tar -zxvf cmsis-toolbox-linux-amd64.tar.gz
+          echo "export PATH=$PATH:$(pwd)/cmsis-toolbox-linux-amd64/bin" >> ~/.bashrc
+          source ~/.bashrc
+          cpackget init https://www.keil.com/pack/index.pidx
+          cpackget init https://arduino.luatos.com/cmsis-pack/AirM2M.pidx
+
+
+      - name: Install Arm Tool
+        run: |
+          . <(curl https://aka.ms/vcpkg-init.sh -L)
+          . ~/.vcpkg/vcpkg-init
+          vcpkg x-update-registry arm
+          vcpkg use uv2csolution
+          cd MDK-ARM
+          uv2csolution CoreMark.uvprojx
+          vcpkg activate
+          armlm activate -product KEMDK-COM0 -server https://mdk-preview.keil.arm.com
+          cbuild CoreMark.csolution.yaml --update-rte
