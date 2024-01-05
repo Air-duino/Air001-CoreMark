@@ -34,7 +34,7 @@ jobs:
           cbuild CoreMark.csolution.yml --update-rte --packs
           vcpkg deactivate
           vcpkg use armclang
-          fromelf --bin output="out/CoreMark/Project/CoreMark.bin" "out/CoreMark/Project/CoreMark.axf"
+          fromelf --bin --output="out/CoreMark/Project/CoreMark.bin" "out/CoreMark/Project/CoreMark.axf"
           fromelf --i32 --output="out/CoreMark/Project/CoreMark.hex" "out/CoreMark/Project/CoreMark.axf"
       
       - name: release
