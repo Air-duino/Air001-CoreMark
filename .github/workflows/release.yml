@@ -32,3 +32,10 @@ jobs:
           cpackget init https://www.keil.com/pack/index.pidx
           armlm activate -product KEMDK-COM0 -server https://mdk-preview.keil.arm.com
           cbuild CoreMark.csolution.yml --update-rte --packs
+      
+      - name: release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          tag: "Latest"
+          artifacts: "MDK-ARM/out/CoreMark/Project/CoreMark.hex, MDK-ARM/out/CoreMark/Project/CoreMark.bin"
