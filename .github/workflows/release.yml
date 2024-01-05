@@ -16,22 +16,19 @@ jobs:
 
       - name: Install CMSIS-Toolbox
         run: |
-          wget https://artifacts.keil.arm.com/cmsis-toolbox/2.2.1/cmsis-toolbox-linux-amd64.tar.gz
-          tar -zxvf cmsis-toolbox-linux-amd64.tar.gz
-          export PATH=$PATH:$(pwd)/cmsis-toolbox-linux-amd64/bin
-          cpackget init https://www.keil.com/pack/index.pidx
+          . <(curl https://aka.ms/vcpkg-init.sh -L)
+          . ~/.vcpkg/vcpkg-init
+          vcpkg x-update-registry arm
           cpackget init https://arduino.luatos.com/cmsis-pack/AirM2M.pidx
           cpackget add AirM2M.AIR001_DFP.1.1.3
 
 
       - name: Install Arm Tool
         run: |
-          . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
-          vcpkg x-update-registry arm
           vcpkg use uv2csolution
           cd MDK-ARM
           uv2csolution CoreMark.uvprojx
           vcpkg activate
           armlm activate -product KEMDK-COM0 -server https://mdk-preview.keil.arm.com
-          cbuild CoreMark.csolution.yaml --update-rte
+          cbuild CoreMark.csolution.yml --update-rte --packs
