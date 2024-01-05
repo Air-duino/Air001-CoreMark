@@ -19,10 +19,6 @@ jobs:
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
           vcpkg x-update-registry arm
-          vcpkg add cmsis-toolbox
-          cpackget init https://arduino.luatos.com/cmsis-pack/AirM2M.pidx
-          cpackget add AirM2M.AIR001_DFP.1.1.3
-
 
       - name: Compile
         run: |
@@ -31,5 +27,8 @@ jobs:
           cd MDK-ARM
           uv2csolution CoreMark.uvprojx
           vcpkg activate
+          cpackget init https://arduino.luatos.com/cmsis-pack/AirM2M.pidx
+          cpackget add AirM2M.AIR001_DFP.1.1.3
+          cpackget init https://www.keil.com/pack/index.pidx
           armlm activate -product KEMDK-COM0 -server https://mdk-preview.keil.arm.com
           cbuild CoreMark.csolution.yml --update-rte --packs
