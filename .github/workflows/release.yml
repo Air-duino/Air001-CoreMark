@@ -19,11 +19,12 @@ jobs:
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
           vcpkg x-update-registry arm
+          vcpkg add cmsis-toolbox
           cpackget init https://arduino.luatos.com/cmsis-pack/AirM2M.pidx
           cpackget add AirM2M.AIR001_DFP.1.1.3
 
 
-      - name: Install Arm Tool
+      - name: Compile
         run: |
           . ~/.vcpkg/vcpkg-init
           vcpkg use uv2csolution
